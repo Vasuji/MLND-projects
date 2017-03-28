@@ -13272,15 +13272,15 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate accuracy</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Accuracy</span>
 <span class="n">accuracy</span> <span class="o">=</span> <span class="n">greater_percent</span> <span class="o">/</span> <span class="mf">100.0</span>
 
-<span class="c1"># Calculate F-score using the formula above for beta = 0.5</span>
+<span class="c1"># Calculate F-score with beta = 0.5</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">recall</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">fscore</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">beta</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">accuracy</span> <span class="o">*</span> <span class="n">recall</span> <span class="o">/</span> <span class="p">(</span><span class="n">beta</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">accuracy</span> <span class="o">+</span> <span class="n">recall</span><span class="p">)</span>
 
-<span class="c1"># Print the results </span>
+<span class="c1"># Print results </span>
 <span class="k">print</span> <span class="p">(</span><span class="s2">&quot;Naive Predictor: [Accuracy score: {:.4f}, F-score: {:.4f}]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">fscore</span><span class="p">))</span>
 </pre></div>
 
@@ -13478,17 +13478,17 @@ In the code block below, you will need to implement the following:</p>
 <span class="k">def</span> <span class="nf">train_predict</span><span class="p">(</span><span class="n">learner</span><span class="p">,</span> <span class="n">sample_size</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span> 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    inputs:</span>
-<span class="sd">       - learner: the learning algorithm to be trained and predicted on</span>
-<span class="sd">       - sample_size: the size of samples (number) to be drawn from training set</span>
-<span class="sd">       - X_train: features training set</span>
-<span class="sd">       - y_train: income training set</span>
-<span class="sd">       - X_test: features testing set</span>
-<span class="sd">       - y_test: income testing set</span>
+<span class="sd">        learner: the learning algorithm to be trained and predicted on</span>
+<span class="sd">        sample_size: the size of samples (number) to be drawn from training set</span>
+<span class="sd">        X_train: features training set</span>
+<span class="sd">        y_train: income training set</span>
+<span class="sd">        X_test: features testing set</span>
+<span class="sd">        y_test: income testing set</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     
     <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1"># please note I modified the training sets by sample size</span>
-    <span class="c1"># to train model with different number of samples, otherwise training time for each model would be constant</span>
+    <span class="c1"># Training sets has been modified the by sample size to train model</span>
+    <span class="c1"># with different number of samples.Otherwise training time for each model would be constant</span>
     <span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
     <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
     
