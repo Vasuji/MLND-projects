@@ -26692,25 +26692,39 @@ E+oHE6YAAAAASUVORK5CYII=
 <p><strong>Answer:</strong></p>
 <p>In most cases the policy does make sense.</p>
 <p>The state dictionary is defined like this:</p>
-<p>{ waypoint: value, light: value, oncoming: value, left: value}</p>
-<p>So, for red light we should always have negative reward for going forward. And it's true for all our cases. Here is an example:</p>
-<p>('green', None, 'forward', 'right', 'left') --&gt; None
- -- forward : -10.71
- -- right : -3.34
- -- None : 0.72
- -- left : -8.76</p>
-<p>Here the Smartcab gets the highest reward for going forward which is its waypoint. Hence the agents executes the optimal policy:</p>
-<p>('green','forward',', None, 'right','left') --&gt; forward
- -- forward : 1.05
- -- None : 0.31
- -- right : 0.26
- -- left : 0.30</p>
-<p>In the last case the policy tells to right while the correct action will be to be None.</p>
-<p>('green', 'left', 'forward', 'right', 'right') --&gt; None
- -- forward : 0.09
- -- None : 0.24
- -- right : 0.46
- -- left : 0.11</p>
+
+<pre><code>state = (inputs['light'],\
+         inputs['oncoming'],\
+         inputs['right'],\
+         inputs['left'],\
+         waypoint)</code></pre>
+<hr>
+<p><strong><em>Example-1</em></strong>: Consider following state-action-reward</p>
+
+<pre><code>('green', None, 'forward', 'right', 'left')---&gt; left
+ -- forward : 0.13
+ -- None : -0.78
+ -- right : 0.17
+ -- left : 0.67</code></pre>
+<p>Here traffic light is <code>green</code>, there is <code>no</code> upcomimg traffic and the waypoint is <code>left</code>. So , moving to <code>left</code> has highest reward and going <code>left</code> is optimal policy.</p>
+<hr>
+<p><strong><em>Example-2</em></strong>: Consider following state-action-reward</p>
+
+<pre><code>('green', 'right', None, None, 'right')
+ -- forward : 0.41
+ -- None : -3.46
+ -- right : 1.62
+ -- left : -12.22</code></pre>
+<p>Here traffic light is <code>green</code>,  the waypoint is <code>right</code>. Moving to <code>right</code> has highest reward and going <code>right</code> is optimal policy.</p>
+<hr>
+<p><strong><em>Example-3</em></strong>: Consider following state-action-reward</p>
+
+<pre><code>('green', 'right', 'left', None, 'right')--&gt; forward
+ -- forward : 0.68
+ -- None : -1.34
+ -- right : 0.42
+ -- left : -2.34</code></pre>
+<p>Here traffic light is <code>green</code>, the waypoint is <code>right</code>. But policy shows going <code>forward</code> has maximum reward. While the correct action would be going to <code>right</code>. So , this is a sub-optimal policy. This will be corected while agent gets more steps to learn.</p>
 
 </div>
 </div>
